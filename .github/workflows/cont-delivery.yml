@@ -43,7 +43,7 @@ jobs:
 
       - name: pack  nuget package
         working-directory: ./
-        run: dotnet pack ./DistributedCacheExtensions/DistributedCacheExtensions.csproj --configuration Release --output ./nupkg --include-symbols  --include-source -p:SymbolPackageFormat=snupkg
+        run: dotnet pack ./DistributedCacheExtensions/Saturn72DistributedCacheExtensions.csproj --configuration Release --output ./nupkg --include-symbols  --include-source -p:SymbolPackageFormat=snupkg
 
       - name: Push packages to nuget
         working-directory: ./nupkg
