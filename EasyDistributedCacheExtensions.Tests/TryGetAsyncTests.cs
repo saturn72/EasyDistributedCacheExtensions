@@ -1,5 +1,5 @@
 
-namespace DistributedCacheExtensions.Tests
+namespace EasyDistributedCacheExtensions.Tests
 {
     public class TryGetAsyncTests
     {

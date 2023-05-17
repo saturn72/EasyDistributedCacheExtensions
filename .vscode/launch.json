@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/DistributedCacheExtensions.Tests/bin/Debug/net7.0/DistributedCacheExtensions.Tests.dll",
+            "program": "${workspaceFolder}/EasyDistributedCacheExtensions.Tests/bin/Debug/net7.0/EasyDistributedCacheExtensions.Tests.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/DistributedCacheExtensions.Tests",
+            "cwd": "${workspaceFolder}/EasyDistributedCacheExtensions.Tests",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
