@@ -29,21 +29,21 @@ jobs:
         run: dotnet build --configuration Release
 
       - name: Test 
-        run: dotnet test ./DistributedCacheExtensions.Tests/DistributedCacheExtensions.Tests.csproj --verbosity normal --configuration Release --no-build /p:CollectCoverage=true
+        run: dotnet test ./EasyDistributedCacheExtensions.Tests/EasyDistributedCacheExtensions.Tests.csproj --verbosity normal --configuration Release --no-build /p:CollectCoverage=true
 
       - name: Publish
-        run: dotnet publish DistributedCacheExtensions/*.csproj --configuration Release
+        run: dotnet publish EasyDistributedCacheExtensions/*.csproj --configuration Release
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2.3.1
         with:
-          name: DistributedCacheExtensions for publish
-          path: ./DistributedCacheExtensions/bin/Release/net7.0/publish/
+          name: EasyDistributedCacheExtensions for publish
+          path: ./EasyDistributedCacheExtensions/bin/Release/net7.0/publish/
           if-no-files-found: error
 
       - name: pack  nuget package
         working-directory: ./
-        run: dotnet pack ./DistributedCacheExtensions/Saturn72DistributedCacheExtensions.csproj --configuration Release --output ./nupkg --include-symbols  --include-source -p:SymbolPackageFormat=snupkg
+        run: dotnet pack ./EasyDistributedCacheExtensions/EasyDistributedCacheExtensions.csproj --configuration Release --output ./nupkg --include-symbols  --include-source -p:SymbolPackageFormat=snupkg
 
       - name: Push packages to nuget
         working-directory: ./nupkg
