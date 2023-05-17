@@ -1,2 +1,4 @@
+[![anyservice ci](https://github.com/saturn72/DistributedCacheExtensions/actions/workflows/cont-delivery.yml/badge.svg?branch=main)](https://github.com/saturn72/DistributedCacheExtensions/actions/workflows/cont-delivery.yml)
+
 # DistributedCacheExtensions
-Extensions for aspnet core's `IDistributedCache` interface
+Generic `IDistributedCache` extensions that are always useful 🐱‍🏍
