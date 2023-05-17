@@ -25,14 +25,14 @@ jobs:
         with:
           dotnet-version: 7.0.x
 
-      - name: Build Solution
-        run: dotnet build --configuration Release
+      # - name: Build Solution
+      #   run: dotnet build --configuration Release
 
       - name: Test 
-        run: dotnet test ./EasyDistributedCacheExtensions.Tests/EasyDistributedCacheExtensions.Tests.csproj --verbosity normal --configuration Release --no-build /p:CollectCoverage=true
+        run: dotnet test ./EasyDistributedCacheExtensions.Tests/EasyDistributedCacheExtensions.Tests.csproj --verbosity normal --configuration Release /p:CollectCoverage=true
 
       - name: Publish
-        run: dotnet publish EasyDistributedCacheExtensions/*.csproj --configuration Release
+        run: dotnet publish EasyDistributedCacheExtensions/EasyDistributedCacheExtensions.csproj --configuration Release
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2.3.1
