@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageId>EasyDistributedCacheExtensions</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>roi@saturn72.com</Authors>
     <Company>saturn technologies</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
