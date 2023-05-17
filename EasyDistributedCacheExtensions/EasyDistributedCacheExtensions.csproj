@@ -6,12 +6,12 @@
     <Nullable>enable</Nullable>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageId>EasyDistributedCacheExtensions</PackageId>
-    <Version>1.0.1</Version>
+    <PackageVersion>1.0.1</PackageVersion>
     <Authors>roi@saturn72.com</Authors>
     <Company>saturn technologies</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <!-- <EmbedUntrackedSources>true</EmbedUntrackedSources> -->
     <!-- <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat> -->
   </PropertyGroup>
