@@ -3,9 +3,15 @@
 
     public static class DistributedCacheExtensionsClass
     {
-        public static async Task<(bool, T?)> TryGetAsync<T>(this IDistributedCache cache, string key, CancellationToken token = default)
+        private static DistributedCacheEntryOptions DefaultOptions = new DistributedCacheEntryOptions()
         {
-            var value = await cache.GetAsync(key, token);
+            AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(12),
+            SlidingExpiration = TimeSpan.FromHours(2),
+        };
+
+        public static async Task<(bool, T?)> TryGetAsync<T>(this IDistributedCache cache, string key, CancellationToken cancellationToken = default)
+        {
+            var value = await cache.GetAsync(key, cancellationToken);
             if (value == null)
             {
                 return (false, default);
@@ -19,19 +25,32 @@
             return (false, default);
         }
 
-        public static async Task<T?> GetAsync<T>(this IDistributedCache cache, string key, CancellationToken token = default)
+        public static async Task<T?> GetAsync<T>(
+            this IDistributedCache cache,
+            string key,
+            Func<Task<T>> acquire,
+            DistributedCacheEntryOptions options = default,
+            CancellationToken cancellationToken = default)
         {
-            var value = await cache.GetAsync(key, token);
-            if (value == null)
-            {
+            var value = await cache.GetAsync(key, cancellationToken);
+            if (value != default)
+                return JsonSerializer.Deserialize<T>(value);
+
+            var a = await acquire();
+            if (a == null)
                 return default;
-            }
-            return JsonSerializer.Deserialize<T>(value);
+
+            var bytes = JsonSerializer.SerializeToUtf8Bytes(a);
+            await cache.SetAsync(key, bytes, options ?? DefaultOptions, cancellationToken);
+            return a;
         }
 
-        public static async Task<T?> GetOrDefaultAsync<T>(this IDistributedCache cache, string key, T? defaultValue = default, CancellationToken token = default)
+        public static Task<T?> GetAsync<T>(this IDistributedCache cache, string key, CancellationToken cancellationToken = default) =>
+            GetOrDefaultAsync<T>(cache, key, default, cancellationToken);
+
+        public static async Task<T?> GetOrDefaultAsync<T>(this IDistributedCache cache, string key, T? defaultValue = default, CancellationToken cancellationToken = default)
         {
-            var value = await cache.GetAsync(key, token);
+            var value = await cache.GetAsync(key, cancellationToken);
             if (value == null)
             {
                 return defaultValue;
