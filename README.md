@@ -1,4 +1,4 @@
-[![anyservice ci](https://github.com/saturn72/DistributedCacheExtensions/actions/workflows/cont-delivery.yml/badge.svg?branch=main)](https://github.com/saturn72/DistributedCacheExtensions/actions/workflows/cont-delivery.yml)
+[![anyservice ci](https://github.com/saturn72/EasyDistributedCacheExtensions/actions/workflows/cont-delivery.yml/badge.svg?branch=main)](https://github.com/saturn72/EasyDistributedCacheExtensions/actions/workflows/cont-delivery.yml)
 
-# DistributedCacheExtensions
+# EasyDistributedCacheExtensions
 Generic `IDistributedCache` extensions that are always useful 🐱‍🏍
